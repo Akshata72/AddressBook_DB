@@ -23,5 +23,22 @@ namespace AddressBookTesting
             var result = Details.GetAddressBookDetails();
             Assert.AreEqual(expected, result.Count);
         }
+        [Test]
+        public void Update_AddressBook_ContactInDB()
+        {
+            bool expected = true;
+            addressBook.First_Name = "Atish";
+            addressBook.Last_Name = "Shelke";
+            addressBook.Address = "Street 07";
+            addressBook.City = "Pune";
+            addressBook.State = "MH";
+            addressBook.Zip = 340045;
+            addressBook.PhoneNumber = 8805320078;
+            addressBook.Email = "satishshelke123@gmail.com";
+            addressBook.AddressBookName = "FrinedCircle";
+            addressBook.Type = "Firend";
+            bool result = details.UpdateContact(addressBook);
+            Assert.AreEqual(expected, result);
+        }
     }
 }
