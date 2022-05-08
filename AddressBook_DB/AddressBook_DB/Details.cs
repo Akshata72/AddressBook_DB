@@ -199,5 +199,28 @@ namespace AdvanceAddressBook
                 throw new AddressException(AddressException.ExceptionType.Contact_Not_Add, "Contact are not added");
             }
         }
+        public void RemoveContact(AddressBook address)
+        {
+            try
+            {
+                using (sqlConnection)
+                {
+                    SqlCommand command = new SqlCommand("dbo.spDeleteContactFormAddressBook", sqlConnection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@First_Name", address.First_Name);
+                    sqlConnection.Open();
+                    var result = command.ExecuteNonQuery();
+                    sqlConnection.Close();
+                    if (result != 0)
+                    {
+                        Console.WriteLine("Contact is Deleted");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
     }
 }
