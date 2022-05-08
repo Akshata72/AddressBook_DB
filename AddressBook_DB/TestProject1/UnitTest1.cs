@@ -40,5 +40,14 @@ namespace AddressBookTesting
             bool result = details.UpdateContact(addressBook);
             Assert.AreEqual(expected, result);
         }
+        [Test]
+        public void Get_Data_ByUsingCityAndState()
+        {
+            bool expected = true;
+            addressBook.City = "Pune";
+            addressBook.State = "MH";
+            bool result = details.GetDataFromCityAndState(addressBook);
+            Assert.AreEqual(expected, result);
+        }
     }
 }
