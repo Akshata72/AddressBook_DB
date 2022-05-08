@@ -19,7 +19,7 @@ namespace AddressBookTesting
         [Test]
         public void Get_AllAddressBookData()
         {
-            var expected = 10;
+            var expected = 11;
             var result = Details.GetAddressBookDetails();
             Assert.AreEqual(expected, result.Count);
         }
@@ -47,6 +47,23 @@ namespace AddressBookTesting
             addressBook.City = "Pune";
             addressBook.State = "MH";
             bool result = details.GetDataFromCityAndState(addressBook);
+            Assert.AreEqual(expected, result);
+        }
+        [Test]
+        public void Add_AddressBook_ContactInDB()
+        {
+            bool expected = true;
+            addressBook.First_Name = "Raju";
+            addressBook.Last_Name = "Wayal";
+            addressBook.Address = "Street 45";
+            addressBook.City = "Haydrabad";
+            addressBook.State = "Telangana";
+            addressBook.Zip = 940045;
+            addressBook.PhoneNumber = 9805310008;
+            addressBook.Email = "raju13@gmail.com";
+            addressBook.AddressBookName = "CollageBook";
+            addressBook.Type = "Friend";
+            bool result = details.AddContact(addressBook);
             Assert.AreEqual(expected, result);
         }
     }
